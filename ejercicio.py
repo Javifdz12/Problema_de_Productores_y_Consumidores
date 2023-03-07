@@ -33,7 +33,7 @@ def customer(name):
 
     count = 1
 
-    while q.empty()==False and True:
+    while True:
 
         q.get()
 
@@ -48,17 +48,6 @@ def customer(name):
 
 
 
-
-
-if __name__ == '__main__':
-
-    t1 = Thread(target=producer,args=("Juan",))
-
-    t2 = Thread(target=customer,args=("Pepe",))
-
-    t1.start()
-
-    t2.start()
 
 
 
