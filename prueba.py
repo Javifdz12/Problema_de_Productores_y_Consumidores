@@ -6,7 +6,8 @@ import time
 
 # Crear cola
 
-q = Queue(10)
+
+q = Queue()
 
 
 def producer(name):
@@ -25,17 +26,18 @@ def producer(name):
 
         count+=1
 
+
 def customer(name):
 
     """consumidor"""
 
     count = 1
 
-    while True:
+    while q.empty()==False and True:
 
         q.get()
 
-        print(f"El consumidor- {name} está comiendo el bollo {count}")
+        print(f"El consumidor- {name} -está comiendo el bollo {count}")
 
         count+=1
 
@@ -46,13 +48,19 @@ def customer(name):
 
 
 
+
+
 if __name__ == '__main__':
 
-    t1 = Thread(target=customer,args=("Maestro Zhang",))
+    t1 = Thread(target=producer,args=("Juan",))
 
-    t2 = Thread(target=producer,args=("Xiaoming",))
+    t2 = Thread(target=customer,args=("Pepe",))
+
+    t1.start()
 
     t2.start()
+
+
 
 
 
